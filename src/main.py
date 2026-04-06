@@ -34,11 +34,26 @@ def longest_common_sequence(data):
                     OPT[i][j - 1],
                     OPT[i - 1][j - 1] + value[A[i - 1]]
                 )
-            # TODO: Case 2: characters do not match
+            # Case 2: characters do not match
             else:
                 OPT[i][j] = max(OPT[i-1][j], OPT[i][j-1])
     
-    # TODO: backtracking
+    # backtracking
+    hvlcs = ""
+    i = n
+    j = m
+
+    while i > 0 and j > 0:
+        if A[i-1] == B[j-1]:
+            hvlcs = A[i-1] + hvlcs
+            i -=1 
+            j -= 1
+        elif OPT[i-1][j] >= OPT[i][j-1]:
+            i-=1
+        else:
+            j-=1
+
+
 
     # Debug reads
     print(f"K: {k}")
@@ -46,6 +61,8 @@ def longest_common_sequence(data):
     print(f"A: {A}")
     print(f"B: {B}")
 
+    print(OPT[n][m])
+    print(hvlcs)
     
 if __name__ == "__main__":
     if len(sys.argv) > 1:
