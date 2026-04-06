@@ -24,6 +24,22 @@ def longest_common_sequence(data):
     # Initialize OPT: 2D array
     OPT = [[0] * (m + 1) for _ in range(n + 1)]
 
+    # Build OPT
+    for i in range(1, n + 1):
+        for j in range(1, m + 1):
+            # Case 1: characters match
+            if A[i - 1] == B[j - 1]:
+                OPT[i][j] = max(
+                    OPT[i - 1][j],
+                    OPT[i][j - 1],
+                    OPT[i - 1][j - 1] + value[A[i - 1]]
+                )
+            # TODO: Case 2: characters do not match
+            else:
+                break
+    
+    # TODO: backtracking
+
     # Debug reads
     print(f"K: {k}")
     print(f"Character values: {value}")
