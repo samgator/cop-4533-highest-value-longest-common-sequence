@@ -36,7 +36,7 @@ def longest_common_sequence(data):
                 )
             # TODO: Case 2: characters do not match
             else:
-                break
+                OPT[i][j] = max(OPT[i-1][j], OPT[i][j-1])
     
     # TODO: backtracking
 
