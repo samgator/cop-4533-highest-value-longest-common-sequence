@@ -55,17 +55,6 @@ def longest_common_sequence(data, outputPath):
         else:
             j-=1
 
-
-
-    # Debug reads
-    print(f"K: {k}")
-    print(f"Character values: {value}")
-    print(f"A: {A}")
-    print(f"B: {B}")
-
-    print(OPT[n][m])
-    print(hvlcs)
-
     with open(outputPath, 'w') as f:
         f.write(str(OPT[n][m]) + "\n")
         f.write(hvlcs)
