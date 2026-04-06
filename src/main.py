@@ -77,10 +77,8 @@ if __name__ == "__main__":
         outputFile = sys.argv[2]
         with open(filename, 'r') as file:
             data = file.read()
-
-        
     else:
-        print("Provide input file as an argument")
+        print("Provide input and output files as arguments")
         sys.exit(1)
 
     longest_common_sequence(data, outputFile)
