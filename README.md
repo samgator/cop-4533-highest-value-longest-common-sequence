@@ -52,4 +52,28 @@ The input files used to generate the graph are located in the the `/input/` dire
 
 The script used to generate our runtime graph is also located in the `/test/` directory, named `runtime_plot.py`.
 ### Question 2: Recurrence Equation
+Let OPT[i][j] be the highest value of a common subsequence of A and B, where string A has 1 to i characters and string B has 1 to j characters. Let 1 <= i <= n and 1 <= j <= m where A has length n and B has length m. 
+
+Base Cases: Any common subsequence with an empty string will have 0 value
+
+OPT[i][0] = 0  for all i
+
+OPT[0][j] = 0 for all j
+
+Recurrence:
+
+If the characters i and j do not match then we must find the highest value common subsequence that exists before A[i] or before B[j]
+
+If the characters i and j match then we consider including them in the subsequence depending on what yields the highest total value. The value of the added character is added to the current best result for A[1…i-1] and B[1…j-1]. 
+
+Mathematically put,
+
+If A[i] != B[j] then
+
+OPT[i][j] = {MAX(OPT[i-1][j], OPT[i][j-1])}
+
+If A[i] = B[j] then
+
+OPT[i][j] = {MAX(OPT[i-1][j], OPT[i][j-1], OPT[i-1][j-1] + val(A[i]))}
+
 ### Question 3: Big-Oh
