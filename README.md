@@ -77,3 +77,29 @@ If A[i] = B[j] then
 OPT[i][j] = {MAX(OPT[i-1][j], OPT[i][j-1], OPT[i-1][j-1] + val(A[i]))}
 
 ### Question 3: Big-Oh
+```
+n = length(A)
+
+m = length(B)
+
+Create 2D arr OPT of size n+1 by m+1
+
+Initialize all of row 0 and col 0 to 0
+
+For i from 1 to n:
+
+  For j from 1 to m:
+  
+      If current characters are equal
+        
+        Take best value from previous characters and add the current weight
+      
+      If current characters arent equal
+    
+        Move to the neighbor with a higher value
+      
+Return the character count of OPT[n][m]
+```
+The runtime is O(nm) because it uses a nested for loop and a n times m sized table, and O(2nm) simplifies to O(nm)
+
+
