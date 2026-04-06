@@ -1,6 +1,6 @@
 import sys
 
-def longest_common_sequence(data):
+def longest_common_sequence(data, outputPath):
     # Read K
     data = data.split()
     k = int(data[0])
@@ -44,10 +44,12 @@ def longest_common_sequence(data):
     j = m
 
     while i > 0 and j > 0:
+        #Match gets put at the front of the string
         if A[i-1] == B[j-1]:
             hvlcs = A[i-1] + hvlcs
             i -=1 
             j -= 1
+        # no match so find the neighbor with a higher value
         elif OPT[i-1][j] >= OPT[i][j-1]:
             i-=1
         else:
@@ -63,14 +65,22 @@ def longest_common_sequence(data):
 
     print(OPT[n][m])
     print(hvlcs)
+
+    with open(outputPath, 'w') as f:
+        f.write(str(OPT[n][m]) + "\n")
+        f.write(hvlcs)
+
     
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
+    if len(sys.argv) > 2:
         filename = sys.argv[1]
+        outputFile = sys.argv[2]
         with open(filename, 'r') as file:
             data = file.read()
+
+        
     else:
         print("Provide input file as an argument")
         sys.exit(1)
 
-    longest_common_sequence(data)
+    longest_common_sequence(data, outputFile)
